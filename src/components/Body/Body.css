@@ -15,6 +15,7 @@ Light gray: hsl(229, 24%, 87%)
 */
 /** color bg */
 /* Magnolia: hsl(217, 100%, 97%) */
+/* background-color: rgb(240, 246, 255); */
 /**************/
 /*
 Alabaster: hsl(231, 100%, 99%)
@@ -26,17 +27,18 @@ body{
     height: 100dvh; */
     /* background-color: black; */
 
-    /* background-color:  hsl(213, 96%, 18%); */
-   /* background-color: hsl(243, 100%, 62%); */
-  /* background-color: hsl(228, 100%, 84%); */
-  /* background-color:  hsl(206, 94%, 87%); */
+    /* background-color:  rgb(2, 41, 90); */
+   /* background-color: rgb(71, 61, 255); */
+  /* background-color: rgb(173, 190, 255) */
+
+  /* background-color:  rgb(191, 226, 253); */
   /* background-color:  hsl(354, 84%, 57%); */
-  /* background-color:  hsl(231, 11%, 63%); */
-  /* background-color:  hsl(229, 24%, 87%); */
+  background-color:  rgb(150, 153, 171);
+  /* background-color:  rgb(214, 217, 230); */
 
   /** color bg */
 
- /* background-color: rgb(240, 246, 255); */
+ background-color: rgb(240, 246, 255);
  /* background-color: hsl(231, 100%, 99%); */
  /* background-color : hsl(0, 0%, 100%); */
 }

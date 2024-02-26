@@ -13,19 +13,19 @@ export default function BgTemplate() {
         <ul className=' grid grid-cols-4 grid-rows-1 w-[48%] h-[20%] mt-[6.5%] gap-[1rem]'>
 
             <li className=''>
-                <button type="button" className=' border  w-full h-full rounded-full  text-white text-[0.8rem] font-semibold  '>1</button>
+                <button type="button" className=' border  w-full h-full rounded-full  text-white text-[0.8rem] font-semibold active:bg-[rgb(191,226,253)] active:text-black '>1</button>
             </li>
 
             <li className=''>
-                <button type="button" className=' border  w-full h-full rounded-full  text-white text-[0.8rem] font-semibold  '>2</button>
+                <button type="button" className=' border  w-full h-full rounded-full  text-white text-[0.8rem] font-semibold active:bg-[rgb(191,226,253)] active:text-black '>2</button>
             </li>
 
             <li className=''>
-                <button type="button" className=' border  w-full h-full rounded-full  text-white text-[0.8rem] font-semibold  '>3</button>
+                <button type="button" className=' border  w-full h-full rounded-full  text-white text-[0.8rem] font-semibold  active:bg-[rgb(191,226,253)] active:text-black'>3</button>
             </li>
 
             <li className=''>
-                <button type="button" className=' border  w-full h-full rounded-full  text-white text-[0.8rem] font-semibold  '>4</button>
+                <button type="button" className=' border  w-full h-full rounded-full  text-white text-[0.8rem] font-semibold  active:bg-[rgb(191,226,253)] active:text-black'>4</button>
             </li>
         </ul> 
     </div>
