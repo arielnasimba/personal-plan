@@ -47,7 +47,18 @@ export default function Body() {
     let addPrice = (price) =>{
         setDataUser(prevDataUser => ({
             ...prevDataUser,
-            totalPM: +price
+            totalPM: dataUser.totalPM + price
+        }));
+    }
+
+    /**     add name to user data object
+     * 
+     * @param {*} price : name to asign to user
+     */
+    let removePrice = (price) =>{
+        setDataUser(prevDataUser => ({
+            ...prevDataUser,
+            totalPM: dataUser.totalPM - price
         }));
     }
 
@@ -130,7 +141,8 @@ export default function Body() {
                                         currentPage={currentPage}  setCurrentPage={setCurrentPage} 
 
                                             dataUser={dataUser} addName={addName} addMail={addMail} addPhone={addPhone} 
-                                                addPlanUser={addPlanUser} addAddsOnUser={addAddsOnUser} addPrice={addPrice}
+                                                addPlanUser={addPlanUser} addAddsOnUser={addAddsOnUser} addPrice={addPrice} 
+                                                    removePrice={removePrice}
                                          />
 
     </body>

@@ -1,44 +1,59 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function PickAdds(props) {
     console.log(props);
 
+    const [bckOnlineService, setBckOnlineService] = useState(false);
+    const [bckCustomizable, setBckCustomizable] = useState(false);
+    const [bckLargerStorage, setBckLargerStorage] = useState(false);
 
-    let handleAddsSelection = (adds) => {
+
+    const [borderOnlineServices, setBorderOnlineServices] = useState(false);
+    const [borderCustomizable, setBorderCustomizable] = useState(false);
+    const [borderLargerStorage, setBorderLargerStorage] = useState(false);
+
+    const [checkboxOnlineService, setCheckboxOnlineService] = useState(false);
+    const [checkboxCustomizable, setCheckboxCustomizable] = useState(false);
+    const [checkboxLargerStorage, setCheckboxLargerStorage] = useState(false);
+
+
+    let handleAddsSelection = (adds, price) => {
         let userAdds = {
-            onlineService: adds == 'onlineService',
-            customizable: adds == 'customizable',
-            largerStorage: adds == 'largerStorage'
+            onlineService: adds === 'onlineService',
+            customizable: adds === 'customizable',
+            largerStorage: adds === 'largerStorage'
         };
-
-
+    
+        let isSelected = userAdds[adds];
+    
         props.addAddsOnUser(userAdds);
         props.setIsFieldsFilledAdds(adds);
-    };
-
-
     
-    let handleFormat = () => {
-
-        if (props.format == "mo") {
-            
-            props.setPriceOnlineServices(props.onlineServices = 1);
-            props.setPriceLargerStorage(props.priceLargerStorage = 2);
-            props.setPriceCustomizable(props.priceCustomizable = 2);
+        if (isSelected) {
+            props.addPrice(price);
+        } else {
+            props.removePrice(price);
         }
-
-        else if (props.format == "yr") {
-            
-            props.setPriceOnlineServices(10);
-            props.setPriceLargerStorage(20);
-            props.setPriceCustomizable(20);
-       }
-        
+    
+        // Mettre à jour l'état de la case à cocher en fonction de l'option sélectionnée/désélectionnée
+        if (adds === 'onlineService') {
+            setBckOnlineService(!bckOnlineService);
+            setBorderOnlineServices(!borderOnlineServices);
+            setCheckboxOnlineService(!checkboxOnlineService);
+        } else if (adds === 'customizable') {
+            setBckCustomizable(!bckCustomizable);
+            setBorderCustomizable(!borderCustomizable);
+            setCheckboxCustomizable(!checkboxCustomizable);
+        } else if (adds === 'largerStorage') {
+            setBckLargerStorage(!bckLargerStorage);
+            setBorderLargerStorage(!borderLargerStorage);
+            setCheckboxLargerStorage(!checkboxLargerStorage);
+        }
     };
     
-    // handleFormat();
 
-    console.log(props);
+// handleFormat();
+
 
   return (
 
@@ -65,16 +80,16 @@ export default function PickAdds(props) {
 
                 <div className="row-start-1 h-full  grid grid-cols-1 grid-rows-3  gap-3 ">
                         {/* first button start*/}
-                    <button className="row-start-1 h-full  grid border-[rgba(150,153,171,0.4)] border-[1px] rounded-[0.3rem]  focus:border-purple-600  focus:bg-gray-200  "
+                    <button  className={`row-start-1 h-full grid border-${borderOnlineServices ? 'purple-600' : "[rgba(150,153,171,0.4)]"} border-[1px] rounded-[0.3rem]   bg-${bckOnlineService ? 'gray-200' : 'white'}`}
                     
-                    onClick={() => {handleAddsSelection('onlineService')}}>
+                    onClick={() => {handleAddsSelection('onlineService', 1), chbg()}}>
 
                         <div className="boxfield h-[66%] w-[90%] m-auto flex ">
 
                             <div className="logo_area w-[14%] h-full flex  items-center  ">
 
                                 {/* <img src={ARCADE} alt="" srcset="" className='w-[93%] h-[93%] my-auto'/> */}
-                                <input type="checkbox" className="checkbox checkbox-sm border-[rgba(0,0,0,0.5)] rounded-[0.3rem] checked:border-purple-600 [--chkbg:theme(colors.purple.600)] [--chkfg:white]" />
+                                <input type="checkbox" checked={checkboxOnlineService} className="checkbox checkbox-sm border-[rgba(0,0,0,0.5)] checked: rounded-[0.3rem] checked:border-purple-600 [--chkbg:theme(colors.purple.600)] [--chkfg:white]" />
 
 
                             </div>
@@ -108,15 +123,15 @@ export default function PickAdds(props) {
 
                 {/* second button start */}
 
-                    <button className="row-start-2 h-full  self-center  grid border-[rgba(150,153,171,0.4)] border-[1px] rounded-[0.3rem]  focus:border-purple-600  focus:bg-gray-200"
-                        onClick={() => handleAddsSelection('customizable')}>
+                    <button className={`row-start-2 h-full self-center grid border-${borderCustomizable ? 'purple-600' : "[rgba(150,153,171,0.4)]"} border-[1px] rounded-[0.3rem]  ${bckCustomizable ? 'bg-gray-200' : ''}`}
+                        onClick={() => handleAddsSelection('customizable',2)}>
 
                         <div className="boxfield h-[66%] w-[90%] m-auto flex ">
 
                             <div className="logo_area w-[14%] h-full flex  items-center  ">
 
                                 {/* <img src={ARCADE} alt="" srcset="" className='w-[93%] h-[93%] my-auto'/> */}
-                                <input type="checkbox" className="checkbox checkbox-sm border-[rgba(0,0,0,0.5)] rounded-[0.3rem] checked:border-purple-600 [--chkbg:theme(colors.purple.600)] [--chkfg:white]" />
+                                <input type="checkbox" checked={checkboxCustomizable} className="checkbox checkbox-sm border-[rgba(0,0,0,0.5)] rounded-[0.3rem] checked:border-purple-600 [--chkbg:theme(colors.purple.600)] [--chkfg:white]" />
 
 
                             </div>
@@ -148,15 +163,15 @@ export default function PickAdds(props) {
 
                          {/* third button start */}
 
-                         <button className="row-start-3 h-full self-end  grid border-[rgba(150,153,171,0.4)] border-[1px] rounded-[0.3rem]  focus:border-purple-600  focus:bg-gray-200" 
-                                onClick={() => handleAddsSelection('largerStorage')}>
+                         <button className={`row-start-3 h-full self-end grid border-${borderLargerStorage ? 'purple-600' : "[rgba(150,153,171,0.4)]"} border-[1px] rounded-[0.3rem]  ${bckLargerStorage ? 'bg-gray-200' : ''}`} 
+                                onClick={() => handleAddsSelection('largerStorage',2)}>
 
                             <div className="boxfield h-[66%] w-[90%] m-auto flex ">
 
                                 <div className="logo_area w-[14%] h-full flex  items-center  ">
                             
                                  {/* <img src={ARCADE} alt="" srcset="" className='w-[93%] h-[93%] my-auto'/> */}
-                                    <input type="checkbox" className="checkbox checkbox-sm border-[rgba(0,0,0,0.5)] rounded-[0.3rem] checked:border-purple-600 [--chkbg:theme(colors.purple.600)] [--chkfg:white]" />
+                                    <input type="checkbox" checked={checkboxLargerStorage} className="checkbox checkbox-sm border-[rgba(0,0,0,0.5)] rounded-[0.3rem] checked:border-purple-600 [--chkbg:theme(colors.purple.600)] [--chkfg:white]" />
                             
                             
                                 </div>

@@ -105,6 +105,10 @@ export default function PlanTemplate(props) {
     const [priceLargerStorage, setPriceLargerStorage] = useState(2);
     const [priceCustomizable, setPriceCustomizable] = useState(2);
 
+
+    // let removePrice = (price) => {
+    //     props.addPrice(-price); // Retire le prix en soustrayant le montant
+    // };
     //* usestates  from pick adds on area end*/
 
     
@@ -143,6 +147,7 @@ export default function PlanTemplate(props) {
                                                                     priceLargerStorage={priceLargerStorage} setPriceLargerStorage={setPriceLargerStorage}
                                                                         priceCustomizable={priceCustomizable} setPriceCustomizable={setPriceCustomizable}
                                                                             format={format}
+                                                                                removePrice={props.removePrice}
                                                         />}
 
                                                                                     
