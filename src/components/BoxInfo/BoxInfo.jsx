@@ -3,8 +3,10 @@ import React from 'react'
 export default function BoxInfo() {
   return (
 
+    <div className="box_template bg-white w-[21rem] h-[22rem] absolute top-[6rem] rounded-[0.7rem]
+    shadow-[rgba(13,_38,_76,_0.19)_0px_2px_10px] flex ">
 
-    <div className="box_inside w-[88%] h-[78%]  m-auto flex flex-col justify-between ">
+        <div className="box_inside w-[88%] h-[78%]  m-auto flex flex-col justify-between ">
 
         <div className="title_area w-full h-[10%] ">
 
@@ -40,7 +42,7 @@ export default function BoxInfo() {
 
                     <div className="bot_field w-full h-[69%]">
 
-                            <input type="text" id="nameUser" className='w-full h-full border-[grey] border-[1px] rounded-[0.3rem] placeholder:pl-2 placeholder:text-[0.9rem]'placeholder="User name" />
+                            <input type="text" id="nameUser" className='w-full h-full border-[grey] border-[1px] rounded-[0.3rem] placeholder:pl-2 placeholder:text-[0.9rem] focus:outline-purple-600'placeholder="User name" />
                     </div>
 
 
@@ -65,7 +67,7 @@ export default function BoxInfo() {
 
                     <div className="bot_field w-full h-[69%] ">
 
-                            <input type="email" id="email" className='w-full h-full  border-[grey] border-[1px] rounded-[0.3rem] placeholder:pl-2 placeholder:text-[0.9rem]'placeholder="infoUser@email.com" />
+                            <input type="email" id="email" className='w-full h-full  border-[grey] border-[1px] rounded-[0.3rem] placeholder:pl-2 placeholder:text-[0.9rem] focus:outline-purple-600'placeholder="infoUser@email.com" />
                     </div>
 
                 </div>
@@ -88,42 +90,27 @@ export default function BoxInfo() {
 
                     <div className="bot_field w-full h-[69%] ">
 
-                            <input type="number" id="phone" className='w-full h-full border-[grey] border-[1px] rounded-[0.3rem] placeholder:pl-2 placeholder:text-[0.9rem]'placeholder="e.g.+1 234 567 890" />
+                            <input type="number" id="phone" className='w-full h-full border-[grey] border-[1px] rounded-[0.3rem] placeholder:pl-2 placeholder:text-[0.9rem] focus:outline-purple-600 focus:appearance-none 'placeholder="e.g.+1 234 567 890" />
                     </div>
 
                 </div>
 
-            {/* <div class="mb-5">
-
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
-
-            </div> */}
-
 
             </form>
-{/* 
-        <form class="max-w-sm mx-auto h-full bg-slate-500 flex flex-col">
-
-          <div class="mb-5">
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-            <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
-          </div>
-          <div class="mb-5">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-            <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
-          </div>
-          <div class="mb-5">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-            <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
-          </div>
-
-        </form> */}
 
 
         </div>
 
 
+        </div>
+
     </div>
+
+    
+
   )
 }
+
+
+{/* <div className="box_template bg-white w-[21rem] h-[22rem] absolute top-[6rem] rounded-[0.7rem]
+shadow-[rgba(13,_38,_76,_0.19)_0px_2px_10px] flex "> */}
