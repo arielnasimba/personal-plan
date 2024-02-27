@@ -1,11 +1,43 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ARCADE from "../../assets/images/icon-arcade.svg"
 import ADVANCED from "../../assets/images/icon-advanced.svg"
 import PRO from "../../assets/images/icon-pro.svg"
 
-export default function SelectPlan() {
+export default function SelectPlan(props) {
+    console.log(props.addPrice);
 
 
+
+    let handleFormatChange = () => {
+        props.setFormat(props.format == 'mo' ? 'yr' : 'mo');
+        props.setPriceArcade(props.priceArcade == 9 ? 90 : 9);
+        props.setPriceAdvance(props.priceAdvance == 12 ? 120 : 12);
+        props.setPricePro(props.pricePro == 15 ? 150 : 15);
+        
+    };
+
+
+    let handlePlanSelection = (plan,price) => {
+        const userPlan = {
+            arcade: plan == 'arcade',
+            advanced: plan == 'advanced',
+            pro: plan == 'pro'
+        };
+
+            // Mettre à true uniquement le plan sélectionné
+    if (plan == 'arcade') {
+        userPlan.arcade = true;
+    } else if (plan == 'advanced') {
+        userPlan.advanced = true;
+    } else if (plan == 'pro') {
+        userPlan.pro = true;
+    }
+        props.addPlanUser(userPlan);
+        props.addPrice( price );
+        props.setIsFieldsFilledSelectPlan(plan);
+    };
+
+    console.log(props);
 
   return (
 
@@ -33,7 +65,8 @@ export default function SelectPlan() {
 
                 <div className="row-start-1 h-[76%]  grid grid-cols-1 grid-rows-3 ">
                         {/* first button start*/}
-                    <button className="row-start-1 h-[90%]  grid border-[rgba(150,153,171,0.4)] border-[1px] rounded-[0.3rem]  focus:border-purple-600  focus:bg-gray-200  ">
+                    <button id='arcade' className="row-start-1 h-[90%]  grid border-[rgba(150,153,171,0.4)] border-[1px] rounded-[0.3rem]  focus:border-purple-600  focus:bg-gray-200  "
+                           onClick={() => {handlePlanSelection('arcade', 9) }}   value={9}   >
 
                         <div className="boxfield h-[65%] w-[88%] m-auto flex ">
 
@@ -49,7 +82,7 @@ export default function SelectPlan() {
                                 </div>
 
                                     {/* price area */}
-                                <p className='text-[0.8rem] ' >$9/mo</p>
+                                <p className='text-[0.8rem] ' >${props.priceArcade}/{props.format}</p>
 
                                 <p></p>
                             </div>
@@ -64,7 +97,8 @@ export default function SelectPlan() {
 
                 {/* second button start */}
 
-                    <button className="row-start-2 h-[90%]  self-center  grid border-[rgba(150,153,171,0.4)] border-[1px] rounded-[0.3rem]  focus:border-purple-600  focus:bg-gray-200">
+                    <button id='advanced' className="row-start-2 h-[90%]  self-center  grid border-[rgba(150,153,171,0.4)] border-[1px] rounded-[0.3rem]  focus:border-purple-600  focus:bg-gray-200"
+                           onClick={() => handlePlanSelection('advanced',12)}   value={12}    >
 
                         <div className="boxfield h-[65%] w-[88%] m-auto flex ">
 
@@ -80,7 +114,7 @@ export default function SelectPlan() {
                                 </div>
 
                                     {/* price area */}
-                                <p className='text-[0.8rem]' >$12/mo</p>
+                                <p className='text-[0.8rem]' >${props.priceAdvance}/{props.format}</p>
 
                                 <p></p>
                             </div>
@@ -93,7 +127,9 @@ export default function SelectPlan() {
 
                          {/* third button start */}
 
-                         <button className="row-start-3 h-[90%]  self-end  grid border-[rgba(150,153,171,0.4)] border-[1px] rounded-[0.3rem]  focus:border-purple-600  focus:bg-gray-200">
+                         <button id='pro' className="row-start-3 h-[90%]  self-end  grid border-[rgba(150,153,171,0.4)] border-[1px] rounded-[0.3rem]  focus:border-purple-600  focus:bg-gray-200"
+                            onClick={() => handlePlanSelection('pro',15)}   value={15} 
+                         >
 
                             <div className="boxfield h-[65%] w-[88%] m-auto flex ">
 
@@ -109,7 +145,7 @@ export default function SelectPlan() {
                                     </div>
 
                                         {/* price area */}
-                                    <p className='text-[0.8rem]' >$15/mo</p>
+                                    <p className='text-[0.8rem]' >${props.pricePro}/{props.format}</p>
 
                                     <p></p>
                                 </div>
@@ -134,17 +170,15 @@ export default function SelectPlan() {
                             <p className='text-[0.85rem] my-1 font-medium'>Monthly</p>
 
                         </div>
-                        <div className=" btt row-start-1   flex justify-center items-center">
+                        <div className=" btt row-start-1   flex justify-center items-center ">
 
                             
                             {/* change version btn*/}
 
                             <div className="box_btn  w-[70%] h-[60%] flex">
-                            <input type="checkbox" class="toggle toggle-sm [--tglbg:rgb(2,41,90)] bg-white hover:bg-white  border-white "  />
+                                <input type="checkbox" class="toggle toggle-sm [--tglbg:rgb(2,41,90)] bg-white hover:bg-white  border-white " onChange={handleFormatChange}  />
 
                             </div>
-                            {/* <input type="checkbox" className="toggle h-[60%] w-[60%] bg-slate-400"  /> */}
-                            {/* <p></p> */}
 
                         </div>
 

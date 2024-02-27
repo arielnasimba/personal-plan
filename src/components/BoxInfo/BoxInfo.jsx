@@ -1,6 +1,86 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-export default function BoxInfo() {
+export default function BoxInfo(props) {
+
+    // console.log(props.dataUser);
+    
+
+    //* Getting data user and method start */
+    const [dataUser, setDataUser] = useState(props.dataUser);
+
+    /** method to add name to user date */
+    // props.addName
+
+    /** method to add phone to user date */
+    // props.addPhone
+
+    /** method to add mail to user date */
+    // props.addMail
+
+    
+
+
+    const validateFields = () => {
+        if (nameUser != '' && mailUser != '' && phoneUser != '') {
+            props.setIsFieldsFilled(true);
+        } else {
+            props.setIsFieldsFilled(false);
+        }
+    };
+
+
+
+
+    // console.log(dataUser);
+
+    // get name user and add to user data start 
+
+    const [nameUser, setNameUser] = useState('');
+
+    const handleNameUser = (e) => {
+        
+        setNameUser(e.target.value);
+        props.addName(e.target.value) ;  
+
+        validateFields();
+    }; 
+
+    // get name user and add to user data end
+
+    // get mail user and add to user data start 
+
+    const [mailUser, setMailUser] = useState('');
+
+    const handleMailUser = (e) => {
+        setMailUser(e.target.value);
+        props.addMail(e.target.value) ; 
+        
+        validateFields();
+    }; 
+
+    // get mail user and add to user data end
+
+    // get phone user and add to user data start 
+
+    const [phoneUser, setPhoneUser] = useState('');
+
+    const handlePhoneUser = (e) => {
+        if (!isNaN(e.target.value ) ) {
+            
+            setPhoneUser(e.target.value);
+            props.addPhone(e.target.value) ;  
+
+            validateFields();
+        }
+    }; 
+
+    // get phone user and add to user data end
+
+
+    //* Getting data user and method end */
+
+ 
+
   return (
 
     <div className="box_template bg-white w-[21rem] h-[22rem] absolute top-[6rem] rounded-[0.7rem]
@@ -29,7 +109,7 @@ export default function BoxInfo() {
                         <div className="left w-[70%] h-full   ">
                            <label for="nameUser">
 
-                            <p className='text-[0.8rem] leading-3 font-medium'>Your name is :</p>
+                            <p className='text-[0.8rem] leading-3 font-medium'>Your name is : {nameUser}</p>
                            </label>
                         </div>
                         
@@ -42,7 +122,11 @@ export default function BoxInfo() {
 
                     <div className="bot_field w-full h-[69%]">
 
-                            <input type="text" id="nameUser" className='w-full h-full border-[grey] border-[1px] rounded-[0.3rem] placeholder:pl-2 placeholder:text-[0.9rem] focus:outline-purple-600'placeholder="User name" />
+                            <input type="text" id="nameUser" className='w-full h-full border-[grey] border-[1px] rounded-[0.3rem] placeholder:pl-2 placeholder:text-[0.9rem] focus:outline-purple-600'placeholder="User name" 
+
+                                value={nameUser}
+                                    onChange={handleNameUser} 
+                            />
                     </div>
 
 
@@ -54,7 +138,7 @@ export default function BoxInfo() {
                         <div className="left w-[70%] h-full   ">
                            <label for="email">
 
-                            <p className='text-[0.8rem] leading-3 font-medium'>Your email is :</p>
+                            <p className='text-[0.8rem] leading-3 font-medium'>Your email is :{mailUser}</p>
                            </label>
                         </div>
                         
@@ -67,7 +151,11 @@ export default function BoxInfo() {
 
                     <div className="bot_field w-full h-[69%] ">
 
-                            <input type="email" id="email" className='w-full h-full  border-[grey] border-[1px] rounded-[0.3rem] placeholder:pl-2 placeholder:text-[0.9rem] focus:outline-purple-600'placeholder="infoUser@email.com" />
+                            <input type="email" id="email" className='w-full h-full  border-[grey] border-[1px] rounded-[0.3rem] placeholder:pl-2 placeholder:text-[0.9rem] focus:outline-purple-600'placeholder="infoUser@email.com" 
+
+                                    value={mailUser}
+                                    onChange={handleMailUser}
+                            />
                     </div>
 
                 </div>
@@ -77,7 +165,7 @@ export default function BoxInfo() {
                         <div className="left w-[70%] h-full   ">
                            <label for="phone">
 
-                            <p className='text-[0.8rem] leading-3'>Phone Number</p>
+                            <p className='text-[0.8rem] leading-3'>Your Phone Number is : {phoneUser}</p>
                            </label>
                         </div>
                         
@@ -90,7 +178,11 @@ export default function BoxInfo() {
 
                     <div className="bot_field w-full h-[69%] ">
 
-                            <input type="number" id="phone" className='w-full h-full border-[grey] border-[1px] rounded-[0.3rem] placeholder:pl-2 placeholder:text-[0.9rem] focus:outline-purple-600 focus:appearance-none 'placeholder="e.g.+1 234 567 890" />
+                            <input type="number" id="phone" className='w-full h-full border-[grey] border-[1px] rounded-[0.3rem] placeholder:pl-2 placeholder:text-[0.9rem] focus:outline-purple-600 focus:appearance-none 'placeholder="e.g.+1 234 567 890" 
+                            
+                            value={phoneUser}
+                            onChange={handlePhoneUser}
+                            />
                     </div>
 
                 </div>
